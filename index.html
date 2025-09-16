@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeonRig - PC Components & Custom Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo-glow"></div>
+      <span>NeonRig</span>
+    </div>
+    <nav class="nav">
+      <button class="nav-btn" data-target="home">Home</button>
+      <button class="nav-btn" data-target="components">Components</button>
+      <button class="nav-btn" data-target="builder">Custom PC</button>
+      <button class="nav-btn" data-target="cart">Cart <span id="cartCount" class="pill">0</span></button>
+      <a class="nav-btn primary" href="checkout.html">Checkout</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="home" class="view active">
+      <div class="hero">
+        <h1>Build Your Dream PC</h1>
+        <p>Professional. Neon. Legit. Shipping in Saudi Arabia/Riyadh only.</p>
+        <div class="cta-row">
+          <button class="btn primary" data-target="builder">Start Custom Build</button>
+          <button class="btn" data-target="components">Browse Components</button>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <div class="card glow">
+          <h3>Curated Parts</h3>
+          <p>Carefully selected CPUs, GPUs, RAM, SSDs, cases, and coolers.</p>
+        </div>
+        <div class="card glow">
+          <h3>Smart Compatibility</h3>
+          <p>Brand → Socket → CPU flow with board, cooler, and case guidance.</p>
+        </div>
+        <div class="card glow">
+          <h3>Auto PSU Sizing</h3>
+          <p>Power supplies chosen automatically based on your GPU and CPU.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="components" class="view">
+      <div class="toolbar components-toolbar">
+        <input id="searchInput" class="search" type="search" placeholder="Search components (e.g., cpu, 7800x3d, 1TB, RTX)" />
+        <select id="sortSelect" class="select">
+          <option value="featured">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name-asc">Name: A → Z</option>
+          <option value="name-desc">Name: Z → A</option>
+        </select>
+        <button id="btnToggleCompact" class="btn">Compact</button>
+      </div>
+      <div class="cat-tabs" id="catTabs"></div>
+      <div id="searchResults" class="results"></div>
+      <div id="catalog" class="market-grid"></div>
+      <div id="pagination" class="pagination"></div>
+    </section>
+
+    <section id="builder" class="view">
+      <h2>Custom PC Builder</h2>
+      <div class="calc-layout">
+        <div class="calc card glow">
+          <div class="calc-head">
+            <div class="title">Your configuration</div>
+            <button id="resetBuilder" class="btn">Reset Data</button>
+          </div>
+
+          <div class="group">
+            <h3>CPU</h3>
+            <div class="row">
+              <label>Brand</label>
+              <select id="selBrand" class="select"></select>
+            </div>
+            <div class="row">
+              <label>Socket</label>
+              <select id="selSocket" class="select"></select>
+            </div>
+            <div class="row">
+              <label>Model</label>
+              <select id="selCpu" class="select"></select>
+            </div>
+          </div>
+
+          <div class="group">
+            <h3>Motherboard</h3>
+            <div class="row">
+              <label>Form factor</label>
+              <select id="selMotherboard" class="select"></select>
+            </div>
+          </div>
+
+          <div class="group">
+            <h3>GPU</h3>
+            <div class="row">
+              <label>Model</label>
+              <select id="selGpu" class="select"></select>
+            </div>
+          </div>
+
+          <div class="group">
+            <h3>Memory</h3>
+            <div class="row">
+              <label>Capacity</label>
+              <select id="selRam" class="select"></select>
+            </div>
+          </div>
+
+          <div class="group">
+            <h3>Storage</h3>
+            <div class="row">
+              <label>NVMe SSD</label>
+              <select id="selSsd" class="select"></select>
+            </div>
+          </div>
+
+          <div class="group">
+            <h3>Case</h3>
+            <div class="row">
+              <label>Model</label>
+              <select id="selCase" class="select"></select>
+            </div>
+          </div>
+
+          <div class="group">
+            <h3>Cooler</h3>
+            <div class="row">
+              <label>Type</label>
+              <select id="selCooler" class="select"></select>
+            </div>
+            <div id="calcNotes" class="note"></div>
+          </div>
+
+          <div class="group actions">
+            <button id="addBuildToCart" class="btn primary" disabled>Add Build to Cart</button>
+          </div>
+        </div>
+
+        <aside class="psu-panel">
+          <div class="card glow watts-card">
+            <div class="muted">Your recommended PSU wattage is</div>
+            <div id="wattsValue" class="watts">0 WATTS</div>
+          </div>
+          <div class="card glow">
+            <h3>Live Summary</h3>
+            <div id="summaryItems"></div>
+            <div class="line"><span>Auto PSU</span><span id="summaryPsu">-</span></div>
+            <div id="builderNotes"></div>
+            <div class="line total"><span>Subtotal</span><span id="builderSubtotal">0 SAR</span></div>
+          </div>
+        </aside>
+      </div>
+      <div class="muted">Power Supply is auto-selected and priced in the total.</div>
+    </section>
+
+    <section id="cart" class="view">
+      <h2>Your Cart</h2>
+      <div id="cartItems" class="cart"></div>
+      <div class="totals">
+        <div class="line"><span>Total</span><span id="cartTotal">0 SAR</span></div>
+        <div class="actions">
+          <a class="btn primary" href="checkout.html">Proceed to Checkout</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>NeonRig © 2025 • Shipping in Saudi Arabia/Riyadh only</div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/builder.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+
+

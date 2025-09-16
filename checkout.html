@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeonRig - Checkout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo-glow"></div>
+      <span>NeonRig</span>
+    </div>
+    <nav class="nav">
+      <a class="nav-btn" href="index.html">Home</a>
+      <a class="nav-btn" href="index.html#cart">Cart</a>
+    </nav>
+  </header>
+
+  <main class="container narrow">
+    <h1>Checkout</h1>
+    <p class="muted">Non-functional placeholder. You can implement payment and shipping later.</p>
+
+    <section class="card glow">
+      <h3>Shipping</h3>
+      <p>Shipping available only in Saudi Arabia/Riyadh.</p>
+      <label class="field">
+        <span>Full Name</span>
+        <input type="text" placeholder="e.g., Ahmed Al-..." />
+      </label>
+      <label class="field">
+        <span>Address (Riyadh)</span>
+        <input type="text" placeholder="Street, District" />
+      </label>
+      <label class="field">
+        <span>Phone</span>
+        <input type="tel" placeholder="05xxxxxxxx" />
+      </label>
+    </section>
+
+    <section class="card glow">
+      <h3>Order Summary</h3>
+      <div id="checkoutItems" class="cart compact"></div>
+      <div class="line"><span>Total</span><span id="checkoutTotal">0 SAR</span></div>
+    </section>
+
+    <div class="actions">
+      <button class="btn primary" disabled>Pay (Coming Soon)</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div>NeonRig © 2025 • Shipping in Saudi Arabia/Riyadh only</div>
+  </footer>
+
+  <script src="js/checkout.js"></script>
+</body>
+</html>
+
+
